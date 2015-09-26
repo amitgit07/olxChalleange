@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14F27" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Event">
+        <attribute name="timeStamp" optional="YES" attributeType="Date">
+            <userInfo/>
+        </attribute>
+        <userInfo/>
+    </entity>
+    <entity name="OLAdObject" representedClassName="OLAdObject" syncable="YES">
+        <attribute name="details" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imagePath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="objId" optional="YES" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <relationship name="inCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OLCategory" inverseName="ads" inverseEntity="OLCategory" syncable="YES"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OLLocation" inverseName="forAd" inverseEntity="OLLocation" syncable="YES"/>
+    </entity>
+    <entity name="OLCategory" representedClassName="OLCategory" syncable="YES">
+        <attribute name="categoryId" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="imagePath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="newAdCounts" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="priceRangeMax" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="priceRangeMin" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="ads" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="OLAdObject" inverseName="inCategory" inverseEntity="OLAdObject" syncable="YES"/>
+    </entity>
+    <entity name="OLLocation" representedClassName="OLLocation" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="forAd" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OLAdObject" inverseName="location" inverseEntity="OLAdObject" syncable="YES"/>
+    </entity>
+    <entity name="OLWidget" representedClassName="OLWidget" syncable="YES">
+        <attribute name="widgetCategoryIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="widgetIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="widgetType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="widgetVisible" optional="YES" attributeType="Boolean" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Event" positionX="261" positionY="189" width="128" height="60"/>
+        <element name="OLCategory" positionX="261" positionY="198" width="128" height="165"/>
+        <element name="OLAdObject" positionX="270" positionY="243" width="128" height="135"/>
+        <element name="OLLocation" positionX="288" positionY="261" width="128" height="105"/>
+        <element name="OLWidget" positionX="297" positionY="297" width="128" height="105"/>
+    </elements>
+</model>
