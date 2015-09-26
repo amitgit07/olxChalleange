@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rS3-R9-Ivy">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Master-->
@@ -39,10 +40,25 @@
                                     <outlet property="delegate" destination="vcM-kA-8BL" id="suh-Hy-Pu8"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FsQ-kE-elL">
+                                <rect key="frame" x="529" y="526" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Sjh-qq-Zct"/>
+                                    <constraint firstAttribute="width" constant="60" id="qSo-9N-gih"/>
+                                </constraints>
+                                <state key="normal" image="addButton">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addWidgetButtonTap:" destination="vcM-kA-8BL" eventType="touchUpInside" id="lls-C0-HoY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="bg3-3m-7i8" firstAttribute="top" secondItem="FsQ-kE-elL" secondAttribute="bottom" constant="14" id="2Io-sr-XgW"/>
                             <constraint firstAttribute="trailing" secondItem="b2D-6C-wWK" secondAttribute="trailing" id="8Wy-mN-Hv0"/>
+                            <constraint firstItem="FsQ-kE-elL" firstAttribute="trailing" secondItem="4vE-V2-lP3" secondAttribute="trailingMargin" constant="5" id="Nkl-9D-u9Y"/>
                             <constraint firstItem="b2D-6C-wWK" firstAttribute="bottom" secondItem="bg3-3m-7i8" secondAttribute="top" id="R4k-vL-5ab"/>
                             <constraint firstItem="b2D-6C-wWK" firstAttribute="top" secondItem="4vE-V2-lP3" secondAttribute="top" id="UKh-ew-EsB"/>
                             <constraint firstItem="b2D-6C-wWK" firstAttribute="leading" secondItem="4vE-V2-lP3" secondAttribute="leading" id="ayH-d6-UZN"/>
@@ -94,4 +110,7 @@
             <point key="canvasLocation" x="1343" y="64"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="addButton" width="128" height="128"/>
+    </resources>
 </document>

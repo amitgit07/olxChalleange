@@ -23,6 +23,9 @@
 #define DLogFrame(frame) DLog(@"%@",NSStringFromCGRect(frame))
 #define DLogPoint(point) DLog(@"%@",NSStringFromCGPoint(point))
 
+#define yShift(yOffset, fromView) (fromView.frame.origin.y + fromView.frame.size.height + yOffset)
+#define xShift(xOffset, fromView) (fromView.frame.origin.x + fromView.frame.size.width + xOffset)
+
 
 
 typedef enum {

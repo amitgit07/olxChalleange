@@ -25,6 +25,7 @@
 		AB0208FB1BB694D200DA55A2 /* OLCategoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0208FA1BB694D200DA55A2 /* OLCategoryViewCell.m */; };
 		AB0208FD1BB694F800DA55A2 /* OLCategoryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0208FC1BB694F800DA55A2 /* OLCategoryViewCell.xib */; };
 		AB0208FF1BB69C4000DA55A2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB0208FE1BB69C4000DA55A2 /* CoreGraphics.framework */; };
+		AB0209031BB6B20000DA55A2 /* OLAddWidgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0209011BB6B20000DA55A2 /* OLAddWidgetViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,8 @@
 		AB0208FA1BB694D200DA55A2 /* OLCategoryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OLCategoryViewCell.m; sourceTree = "<group>"; };
 		AB0208FC1BB694F800DA55A2 /* OLCategoryViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OLCategoryViewCell.xib; sourceTree = "<group>"; };
 		AB0208FE1BB69C4000DA55A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		AB0209001BB6B20000DA55A2 /* OLAddWidgetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OLAddWidgetViewController.h; sourceTree = "<group>"; };
+		AB0209011BB6B20000DA55A2 /* OLAddWidgetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OLAddWidgetViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,8 @@
 				AB0208A21BB6838F00DA55A2 /* AppDelegate.m */,
 				AB0208C91BB684EC00DA55A2 /* OLHomeViewController.h */,
 				AB0208CA1BB684EC00DA55A2 /* OLHomeViewController.m */,
+				AB0209001BB6B20000DA55A2 /* OLAddWidgetViewController.h */,
+				AB0209011BB6B20000DA55A2 /* OLAddWidgetViewController.m */,
 				AB0208A71BB6838F00DA55A2 /* MasterViewController.h */,
 				AB0208A81BB6838F00DA55A2 /* MasterViewController.m */,
 				AB0208AA1BB6838F00DA55A2 /* DetailViewController.h */,
@@ -300,6 +305,7 @@
 			files = (
 				AB0208CB1BB684EC00DA55A2 /* OLHomeViewController.m in Sources */,
 				AB0208AC1BB6838F00DA55A2 /* DetailViewController.m in Sources */,
+				AB0209031BB6B20000DA55A2 /* OLAddWidgetViewController.m in Sources */,
 				AB0208A91BB6838F00DA55A2 /* MasterViewController.m in Sources */,
 				AB0208A61BB6838F00DA55A2 /* OLXAppTwo.xcdatamodeld in Sources */,
 				AB0208F21BB68A5800DA55A2 /* OLWidget.m in Sources */,

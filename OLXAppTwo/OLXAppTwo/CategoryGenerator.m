@@ -52,7 +52,7 @@
 //    widgetIndex;
 //    widgetCategoryIndex;
     for (int i = 0; i < 5; i++) {
-        NSDictionary* param = @{@"widgetType":@((i < 3)?i:2),
+        NSDictionary* param = @{@"widgetType":@(2),
                                 @"widgetVisible": @(1),
                                 @"widgetIndex": @(i),
                                 @"widgetCategoryIndex":@(i+3)};

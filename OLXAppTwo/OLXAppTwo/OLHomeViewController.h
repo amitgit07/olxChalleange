@@ -10,5 +10,6 @@
 
 @interface OLHomeViewController : UIViewController 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+- (IBAction)addWidgetButtonTap:(UIButton *)sender;
 
 @end

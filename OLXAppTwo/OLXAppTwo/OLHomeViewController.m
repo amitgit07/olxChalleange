@@ -13,6 +13,7 @@
 #import "OLWidget.h"
 #import "OLCategory.h"
 #import "Contants.h"
+#import "OLAddWidgetViewController.h"
 
 @interface OLHomeViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
@@ -109,9 +110,9 @@ static NSIndexPath  *sourceIndexPath = nil;
                 snapshot = nil;
                 
             }];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self.tableView reloadData];
-            });
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                [self.tableView reloadData];
+//            });
         }break;
     }
 }
@@ -123,6 +124,7 @@ static NSIndexPath  *sourceIndexPath = nil;
     fromObj.widgetIndex = toObj.widgetIndex;
     toObj.widgetIndex = temp;
     [APPDelegate saveContext];
+    [self.tableView reloadData];
 }
 - (UIView *)customSnapshotFromView:(UIView *)inputView {
     
@@ -228,10 +230,9 @@ static NSIndexPath  *sourceIndexPath = nil;
 
 - (void)configureCell:(OLCategoryViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     OLWidget *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
     OLCategory* anObj = [OLCategory categoryWithIndex:object.widgetCategoryIndex.integerValue];
-    
-    cell.titleLabel.text = [NSString stringWithFormat:@"Index %@ - Type=%@: %@",object.widgetIndex, object.widgetType, anObj.name];
+    DLogObj(anObj.name);
+    cell.titleLabel.text = anObj.name;
     [cell.thumbView setImage:[UIImage imageNamed:anObj.imagePath]];
 }
 
@@ -268,7 +269,7 @@ static NSIndexPath  *sourceIndexPath = nil;
         // Replace this implementation with code to handle the error appropriately.
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
+//        abort();
     }
     
     return _fetchedResultsController;
@@ -312,7 +313,7 @@ static NSIndexPath  *sourceIndexPath = nil;
             break;
             
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            [self configureCell:(OLCategoryViewCell*)[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
             
         case NSFetchedResultsChangeMove:
@@ -337,4 +338,8 @@ static NSIndexPath  *sourceIndexPath = nil;
  }
  */
 
+- (IBAction)addWidgetButtonTap:(UIButton *)sender {
+//    OLAddWidgetViewController* newObj = [[OLAddWidgetViewController alloc] init];
+//    [self.navigationController pushViewController:newObj animated:YES];
+}
 @end
