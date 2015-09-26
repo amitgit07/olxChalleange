@@ -69,6 +69,7 @@
 //    OLCategory* anObj = [OLCategory categoryWithIndex:object.widgetCategoryIndex.integerValue];
 //    DLogObj(anObj.name);
     cell.titleLabel.text = object.name;
+    [cell.thumbView setImage:[UIImage imageNamed:object.imagePath]];
     OLWidget* anObj = [OLWidget widgetForCatogoryIndex:object.index.integerValue];
     if (!anObj) {
         [cell setIsVisible:NO];
