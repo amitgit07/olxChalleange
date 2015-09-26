@@ -29,6 +29,8 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.managedObjectContext = [APPDelegate managedObjectContext];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([OLCategoryViewCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"OLCategoryViewCell"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,14 +62,41 @@
     return YES;
 }
 - (void)configureCell:(OLCategoryViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    OLWidget *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    if (!object) {
-        DLog(@"Something is wrong");
+    OLCategory *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
+//    if (!object) {
+//        DLog(@"Something is wrong");
+//    }
+//    OLCategory* anObj = [OLCategory categoryWithIndex:object.widgetCategoryIndex.integerValue];
+//    DLogObj(anObj.name);
+    cell.titleLabel.text = object.name;
+    OLWidget* anObj = [OLWidget widgetForCatogoryIndex:object.index.integerValue];
+    if (!anObj) {
+        [cell setIsVisible:NO];
     }
-    OLCategory* anObj = [OLCategory categoryWithIndex:object.widgetCategoryIndex.integerValue];
-    DLogObj(anObj.name);
-    cell.titleLabel.text = anObj.name;
-    [cell.thumbView setImage:[UIImage imageNamed:anObj.imagePath]];
+    else {
+        [cell setIsVisible:anObj.widgetVisible.boolValue];
+    }
+    
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    OLCategory *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    OLWidget* anObj = [OLWidget widgetForCatogoryIndex:object.index.integerValue];
+    OLCategoryViewCell *cell = (OLCategoryViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    [cell setIsVisible:anObj.widgetVisible.boolValue];
+    [cell setIsVisible:YES];
+
+    int count = (int)[[OLWidget allObjects] count];
+    if (!anObj) {
+        NSDictionary* param = @{@"widgetType":@(2),
+                                @"widgetVisible": @(1),
+                                @"widgetIndex": @(count),
+                                @"widgetCategoryIndex":object.index};
+        [OLWidget newWidgetObjectFromDictionary:param];
+        [APPDelegate saveContext];
+    }
+    else {
+        [anObj setWidgetVisible:[NSNumber numberWithBool:YES]];
+    }
 }
 #pragma mark - Fetched results controller
 
@@ -79,14 +108,13 @@
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"OLWidget" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"OLCategory" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     
-    // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"widgetIndex" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];

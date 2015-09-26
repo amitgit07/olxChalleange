@@ -42,6 +42,26 @@
     }
     return nil;
 }
+
++ (OLWidget*)widgetForCatogoryIndex:(NSUInteger)wIndex {
+    NSFetchRequest* request = [[NSFetchRequest alloc] initWithEntityName:@"OLWidget"];
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"self.widgetCategoryIndex=%@",@(wIndex)];
+    [request setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *result = [MOC executeFetchRequest:request error:&error];
+    if (error) {
+        NSLog(@"%s Unable to execute fetch request.",__FUNCTION__);
+        NSLog(@"%@, %@", error, error.localizedDescription);
+        return nil;
+    } else {
+        if (result.count) {
+            return [result lastObject];
+        }
+        return nil;
+    }
+    return nil;
+}
 - (void)setPropertiesFromDictionary:(NSDictionary*)dict {
     if (!dict) return;
     

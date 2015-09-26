@@ -19,6 +19,7 @@
 
 + (OLWidget*)newWidgetObjectFromDictionary:(NSDictionary*)dict;
 + (OLWidget*)widgetWithIndex:(NSUInteger)wIndex;
++ (OLWidget*)widgetForCatogoryIndex:(NSUInteger)wIndex;
 - (void)setPropertiesFromDictionary:(NSDictionary*)dict;
 + (NSArray*)allObjects;
 

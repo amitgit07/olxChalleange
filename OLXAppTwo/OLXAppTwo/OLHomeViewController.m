@@ -203,6 +203,7 @@ static NSIndexPath  *sourceIndexPath = nil;
 //        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
 //    }
     [self configureCell:cell atIndexPath:indexPath];
+    [cell setIsVisible:NO];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -215,16 +216,20 @@ static NSIndexPath  *sourceIndexPath = nil;
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-        [context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
-        
-        NSError *error = nil;
-        if (![context save:&error]) {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }
+//        NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+        OLWidget *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [object setWidgetVisible:[NSNumber numberWithBool:NO]];
+        [APPDelegate saveContext];
+        [self.tableView reloadData];
+//        [context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+//        
+//        NSError *error = nil;
+//        if (![context save:&error]) {
+//            // Replace this implementation with code to handle the error appropriately.
+//            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+//            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+//            abort();
+//        }
     }
 }
 
@@ -234,6 +239,8 @@ static NSIndexPath  *sourceIndexPath = nil;
     DLogObj(anObj.name);
     cell.titleLabel.text = anObj.name;
     [cell.thumbView setImage:[UIImage imageNamed:anObj.imagePath]];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell setSelected:NO];
 }
 
 #pragma mark - Fetched results controller
@@ -251,6 +258,9 @@ static NSIndexPath  *sourceIndexPath = nil;
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
+    
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"self.widgetVisible=%@",[NSNumber numberWithBool:YES]];
+    [fetchRequest setPredicate:predicate];
     
     // Edit the sort key as appropriate.
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"widgetIndex" ascending:YES];
@@ -339,7 +349,7 @@ static NSIndexPath  *sourceIndexPath = nil;
  */
 
 - (IBAction)addWidgetButtonTap:(UIButton *)sender {
-//    OLAddWidgetViewController* newObj = [[OLAddWidgetViewController alloc] init];
-//    [self.navigationController pushViewController:newObj animated:YES];
+    OLAddWidgetViewController* newObj = [[OLAddWidgetViewController alloc] init];
+    [self.navigationController pushViewController:newObj animated:YES];
 }
 @end

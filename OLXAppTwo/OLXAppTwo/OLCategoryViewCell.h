@@ -11,5 +11,5 @@
 @interface OLCategoryViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *thumbView;
-
+- (void)setIsVisible:(BOOL)visible;
 @end
