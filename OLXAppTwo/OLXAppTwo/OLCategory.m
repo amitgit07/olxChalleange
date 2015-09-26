@@ -24,11 +24,18 @@
 
 
 
-+ (OLCategory*)newCategoryObjectFromDictionary:(NSDictionary*)dict {
++ (OLCategory*)newSafeCategoryObjectFromDictionary:(NSDictionary*)dict {
     if (!dict) return nil;
-    OLCategory* newObj = [NSEntityDescription insertNewObjectForEntityForName:@"OLCategory" inManagedObjectContext:MOC];
-    [newObj setPropertiesFromDictionary:dict];
-    return newObj;
+    OLCategory* oldObj = [OLCategory categoryWithIndex:[NullObjectReplace(dict, @"index", @(0)) integerValue]];
+    if (oldObj) {
+        [oldObj setPropertiesFromDictionary:dict];
+        return oldObj;
+    }
+    else {
+        OLCategory* newObj = [NSEntityDescription insertNewObjectForEntityForName:@"OLCategory" inManagedObjectContext:MOC];
+        [newObj setPropertiesFromDictionary:dict];
+        return newObj;
+    }
 }
 + (OLCategory*)categoryWithIndex:(NSUInteger)wIndex {
     NSFetchRequest* request = [[NSFetchRequest alloc] initWithEntityName:@"OLCategory"];
@@ -57,8 +64,8 @@
     self.priceRangeMin = [NSNumber numberWithFloat:[NullObjectReplace(dict, @"priceRangeMin", @(0)) floatValue]];
     self.priceRangeMax = [NSNumber numberWithFloat:[NullObjectReplace(dict, @"priceRangeMax", @(0)) floatValue]];
 //    self.newAdCounts = [NSNumber numberWithInteger:[NullObjectReplace(dict, @"newAdCounts", @(0)) integerValue]];
-    self.index = [NSNumber numberWithInteger:[NullObjectReplace(dict, @"widgetIndex", @(0)) integerValue]];
-    self.categoryId = [NSNumber numberWithInteger:[NullObjectReplace(dict, @"widgetIndex", @(0)) integerValue]];
+    self.index = [NSNumber numberWithInteger:[NullObjectReplace(dict, @"index", @(0)) integerValue]];
+    self.categoryId = [NSNumber numberWithInteger:[NullObjectReplace(dict, @"categoryId", @(0)) integerValue]];
 }
 
 

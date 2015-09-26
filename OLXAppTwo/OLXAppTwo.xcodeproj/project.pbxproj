@@ -24,6 +24,7 @@
 		AB0208F81BB6944100DA55A2 /* CategoryGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0208F71BB6944100DA55A2 /* CategoryGenerator.m */; };
 		AB0208FB1BB694D200DA55A2 /* OLCategoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0208FA1BB694D200DA55A2 /* OLCategoryViewCell.m */; };
 		AB0208FD1BB694F800DA55A2 /* OLCategoryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0208FC1BB694F800DA55A2 /* OLCategoryViewCell.xib */; };
+		AB0208FF1BB69C4000DA55A2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB0208FE1BB69C4000DA55A2 /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		AB0208F91BB694D200DA55A2 /* OLCategoryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OLCategoryViewCell.h; sourceTree = "<group>"; };
 		AB0208FA1BB694D200DA55A2 /* OLCategoryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OLCategoryViewCell.m; sourceTree = "<group>"; };
 		AB0208FC1BB694F800DA55A2 /* OLCategoryViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OLCategoryViewCell.xib; sourceTree = "<group>"; };
+		AB0208FE1BB69C4000DA55A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB0208FF1BB69C4000DA55A2 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +96,7 @@
 		AB0208911BB6838E00DA55A2 = {
 			isa = PBXGroup;
 			children = (
+				AB0208FE1BB69C4000DA55A2 /* CoreGraphics.framework */,
 				AB02089C1BB6838F00DA55A2 /* OLXAppTwo */,
 				AB0208BC1BB6838F00DA55A2 /* OLXAppTwoTests */,
 				AB02089B1BB6838F00DA55A2 /* Products */,
@@ -502,6 +506,7 @@
 				AB0208C51BB6838F00DA55A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AB0208C61BB6838F00DA55A2 /* Build configuration list for PBXNativeTarget "OLXAppTwoTests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +515,7 @@
 				AB0208C81BB6838F00DA55A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -51,5 +51,17 @@
     self.widgetVisible = [NSNumber numberWithBool:[NullObjectReplace(dict, @"widgetVisible", @(0)) boolValue]];
 }
 
-
++ (NSArray*)allObjects {
+    NSFetchRequest* request = [[NSFetchRequest alloc] initWithEntityName:@"OLWidget"];
+    NSError *error = nil;
+    NSArray *result = [MOC executeFetchRequest:request error:&error];
+    if (error) {
+        NSLog(@"%s Unable to execute fetch request.",__FUNCTION__);
+        NSLog(@"%@, %@", error, error.localizedDescription);
+        return nil;
+    } else {
+        return result;
+    }
+    return nil;
+}
 @end

@@ -9,5 +9,10 @@
 #import "OLCategoryViewCell.h"
 
 @implementation OLCategoryViewCell
-
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    self.thumbView.layer.cornerRadius = self.thumbView.frame.size.width/2.0f;
+    [self.thumbView.layer setMasksToBounds:YES];
+    
+}
 @end

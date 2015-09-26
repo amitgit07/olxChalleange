@@ -21,7 +21,7 @@
 @property (nonatomic, retain) NSNumber * categoryId;
 @property (nonatomic, retain) NSSet *ads;
 
-+ (OLCategory*)newCategoryObjectFromDictionary:(NSDictionary*)dict;
++ (OLCategory*)newSafeCategoryObjectFromDictionary:(NSDictionary*)dict;
 + (OLCategory*)categoryWithIndex:(NSUInteger)wIndex;
 - (void)setPropertiesFromDictionary:(NSDictionary*)dict;
 

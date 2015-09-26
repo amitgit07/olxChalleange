@@ -8,11 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
-typedef enum {
-    OLWidgetTypeTool,
-    OLWidgetTypeAds,
-    OLWidgetTypeCategory,
-}OLWidgetType;
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>

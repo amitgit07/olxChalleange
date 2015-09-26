@@ -20,6 +20,6 @@
 + (OLWidget*)newWidgetObjectFromDictionary:(NSDictionary*)dict;
 + (OLWidget*)widgetWithIndex:(NSUInteger)wIndex;
 - (void)setPropertiesFromDictionary:(NSDictionary*)dict;
-
++ (NSArray*)allObjects;
 
 @end
