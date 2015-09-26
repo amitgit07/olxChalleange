@@ -24,23 +24,33 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sOn-JE-xGH">
-                        <rect key="frame" x="8" y="8" width="87" height="87.5"/>
+                        <rect key="frame" x="8" y="8" width="87" height="88"/>
                         <color key="backgroundColor" red="0.67889094192214217" green="0.68846164990862513" blue="0.68951231060606055" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="87.5" id="Sad-ge-j3Y"/>
                             <constraint firstAttribute="width" constant="87" id="X5l-WL-k3K"/>
                         </constraints>
                     </imageView>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selected" translatesAutoresizingMaskIntoConstraints="NO" id="7MK-uk-GZN">
+                        <rect key="frame" x="281" y="32" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="Mkd-yX-d0W"/>
+                            <constraint firstAttribute="width" constant="40" id="wZk-W2-0aY"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="sOn-JE-xGH" firstAttribute="leading" secondItem="jWE-jf-ive" secondAttribute="leadingMargin" id="475-1I-Eob"/>
                     <constraint firstItem="sOn-JE-xGH" firstAttribute="top" secondItem="jWE-jf-ive" secondAttribute="topMargin" id="6Su-Tw-RXt"/>
+                    <constraint firstItem="7MK-uk-GZN" firstAttribute="centerY" secondItem="sOn-JE-xGH" secondAttribute="centerY" id="7mg-1T-mcx"/>
+                    <constraint firstItem="7MK-uk-GZN" firstAttribute="trailing" secondItem="ibT-7a-gIx" secondAttribute="trailing" id="I8V-KN-FB4"/>
                     <constraint firstItem="ibT-7a-gIx" firstAttribute="trailing" secondItem="jWE-jf-ive" secondAttribute="trailingMargin" id="MT2-6R-vDX"/>
                     <constraint firstItem="ibT-7a-gIx" firstAttribute="leading" secondItem="sOn-JE-xGH" secondAttribute="trailing" constant="13" id="MYR-85-9mR"/>
                     <constraint firstItem="ibT-7a-gIx" firstAttribute="top" secondItem="jWE-jf-ive" secondAttribute="topMargin" constant="9" id="jb3-Hg-2zm"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="catSelected" destination="7MK-uk-GZN" id="Y5l-q0-tZ0"/>
                 <outlet property="textLabel" destination="ibT-7a-gIx" id="3Tp-RY-PAl"/>
                 <outlet property="thumbView" destination="sOn-JE-xGH" id="GLW-VP-zvv"/>
                 <outlet property="titleLabel" destination="ibT-7a-gIx" id="qst-FR-svF"/>
@@ -48,4 +58,7 @@
             <point key="canvasLocation" x="38.5" y="186"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="selected" width="128" height="128"/>
+    </resources>
 </document>

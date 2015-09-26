@@ -24,13 +24,14 @@
 
 }
 - (void)setIsVisible:(BOOL)visible {
-    if (visible) {
-        [self setBackgroundColor:[UIColor colorWithRed:0.463 green:0.847 blue:0.921 alpha:0.760]];
-        [self.contentView setBackgroundColor:[UIColor colorWithRed:0.463 green:0.847 blue:0.921 alpha:0.760]];
-    }
-    else {
-        [self setBackgroundColor:[UIColor whiteColor]];
-        [self.contentView setBackgroundColor:[UIColor whiteColor]];
-    }
+    [self.catSelected setHidden:!visible];
+//    if (visible) {
+//        [self setBackgroundColor:[UIColor colorWithRed:0.463 green:0.847 blue:0.921 alpha:0.760]];
+//        [self.contentView setBackgroundColor:[UIColor colorWithRed:0.463 green:0.847 blue:0.921 alpha:0.760]];
+//    }
+//    else {
+//        [self setBackgroundColor:[UIColor whiteColor]];
+//        [self.contentView setBackgroundColor:[UIColor whiteColor]];
+//    }
 }
 @end
